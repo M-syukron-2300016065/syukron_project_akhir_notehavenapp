@@ -1,3 +1,4 @@
+// NoteCard.jsx
 const NoteCard = ({ note, onDelete }) => {
   return (
     <div className="border p-4 mb-4 rounded shadow">
@@ -9,6 +10,13 @@ const NoteCard = ({ note, onDelete }) => {
         className="bg-red-500 text-white p-2 rounded mt-2"
       >
         Delete
+      </button>
+      {/* Tombol Edit (akan menuju halaman EditNote) */}
+      <button
+        className="bg-blue-500 text-white p-2 rounded mt-2 ml-2"
+        onClick={() => window.location.href = `/edit/${note.id}`}
+      >
+        Edit
       </button>
     </div>
   );

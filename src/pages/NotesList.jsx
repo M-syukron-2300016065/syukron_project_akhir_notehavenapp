@@ -1,3 +1,4 @@
+// NotesList.jsx
 import { useState, useEffect } from "react";
 import NoteCard from "../components/NoteCard";
 
@@ -5,19 +6,16 @@ const NotesList = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    fetch("/data.json") // Mengambil file dari folder public
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then((data) => setNotes(data.notes))
-      .catch((error) => console.error("Error fetching notes:", error));
+    // Mengambil catatan dari localStorage
+    const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    setNotes(storedNotes);
   }, []);
 
   const deleteNote = (id) => {
-    setNotes(notes.filter((note) => note.id !== id));
+    // Menghapus catatan dari localStorage
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    setNotes(updatedNotes);
   };
 
   return (

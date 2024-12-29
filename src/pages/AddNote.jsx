@@ -1,6 +1,6 @@
+// AddNote.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { notes } from "./data.json"; // Import notes array dari data.js
 
 const AddNote = () => {
   const [title, setTitle] = useState("");
@@ -10,11 +10,16 @@ const AddNote = () => {
 
   const handleAddNote = () => {
     const newNote = { id: Date.now(), title, content, category };
-    //notes.push(newNote); // Simpan data ke array notes
-    console.log("New Note:", newNote);
-    navigate("/notes");
-  };
 
+    // Menambahkan catatan ke localStorage
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.push(newNote);
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    // Redirect ke Dashboard setelah menambah catatan
+    navigate("/");
+  };
+  
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Add Note</h1>

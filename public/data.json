@@ -11,12 +11,6 @@
       "title": "Shopping List",
       "content": "Milk, Bread, Eggs, and Cheese.",
       "category": "Personal"
-    },
-    {
-      "id": 3,
-      "title": "Book Ideas",
-      "content": "Think of concepts for new sci-fi novel.",
-      "category": "Writing"
     }
   ]
 }

@@ -1,16 +1,27 @@
-import { useState } from "react";
+// EditNote.jsx
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const EditNote = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [category, setCategory] = useState("");
+  const [note, setNote] = useState({ title: "", content: "", category: "" });
+
+  useEffect(() => {
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    const foundNote = notes.find((note) => note.id === parseInt(id));
+    if (foundNote) {
+      setNote(foundNote);
+    }
+  }, [id]);
 
   const handleSave = () => {
-    console.log("Updated Note:", { id, title, content, category });
-    navigate("/notes");
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    const updatedNotes = notes.map((n) =>
+      n.id === parseInt(id) ? { ...n, ...note } : n
+    );
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    navigate("/notes"); // Setelah mengedit, arahkan ke halaman Notes
   };
 
   return (
@@ -19,19 +30,19 @@ const EditNote = () => {
       <input
         type="text"
         className="border p-2 w-full mb-4"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={note.title}
+        onChange={(e) => setNote({ ...note, title: e.target.value })}
       />
       <textarea
         className="border p-2 w-full mb-4"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
+        value={note.content}
+        onChange={(e) => setNote({ ...note, content: e.target.value })}
       ></textarea>
       <input
         type="text"
         className="border p-2 w-full mb-4"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
+        value={note.category}
+        onChange={(e) => setNote({ ...note, category: e.target.value })}
       />
       <button onClick={handleSave} className="bg-blue-500 text-white p-2 rounded">
         Save Changes
