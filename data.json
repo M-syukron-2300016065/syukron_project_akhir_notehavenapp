@@ -1,0 +1,16 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Meeting Notes",
+      "content": "Discuss project timeline and deliverables.",
+      "category": "Work"
+    },
+    {
+      "id": 2,
+      "title": "Shopping List",
+      "content": "Milk, Bread, Eggs, and Cheese.",
+      "category": "Personal"
+    }
+  ]
+}

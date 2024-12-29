@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/syukron_project_akhir_notehavenapp/static/css/main.ca77b0d3.css",
+    "main.js": "/syukron_project_akhir_notehavenapp/static/js/main.b9687cda.js",
+    "index.html": "/syukron_project_akhir_notehavenapp/index.html",
+    "main.ca77b0d3.css.map": "/syukron_project_akhir_notehavenapp/static/css/main.ca77b0d3.css.map",
+    "main.b9687cda.js.map": "/syukron_project_akhir_notehavenapp/static/js/main.b9687cda.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca77b0d3.css",
+    "static/js/main.b9687cda.js"
+  ]
+}
